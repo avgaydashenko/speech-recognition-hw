@@ -2,7 +2,6 @@ import librosa
 import numpy as np
 import scipy.io.wavfile as wav
 
-from extract_pyAA_features import get_features_from_wav
 
 class FeatureExtractor:
     def extract_features(self, wav_path):
@@ -65,12 +64,3 @@ class LibrosaExtractor(FeatureExtractor):
                         ])
 
         return np.concatenate((mfcc, fbank), axis=1)
-
-
-class PyAAExtractor(FeatureExtractor):
-    """Python Audio Analysis features extractor"""
-    def __init__(self, frame_sec=0.1):
-        self.frame_sec = frame_sec
-
-    def extract_features(self, wav_path):
-        return get_features_from_wav(wav_path, self.frame_sec)
