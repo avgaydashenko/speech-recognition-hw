@@ -7,7 +7,6 @@ import scipy.io.wavfile as wav
 
 from laughter_classification.utils import chunks, in_any, interv_to_range, get_sname
 from laughter_prediction.feature_extractors import LibrosaExtractor
-from laughter_prediction.sample_audio import sample_wav_by_time
 
 """
 Rewrote this class to get features instead of samples and frames with overlapping.
