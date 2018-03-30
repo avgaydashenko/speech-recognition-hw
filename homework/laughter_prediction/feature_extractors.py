@@ -20,22 +20,22 @@ class LibrosaExtractor(FeatureExtractor):
 
     https://www.kaggle.com/ybonde/log-spectrogram-and-mfcc-filter-bank-example
 
-    frame_sec: seconds in frame (0.5)
+    frame_sec: seconds in frame (0.1)
 
     LEN -- samples num in .wav file (176000)
-    FRAME_SIZE -- samples num in frame (8000)
-    FRAME_STEP -- samples num between successive frames (1600)
+    FRAME_SIZE -- samples num in frame (1600)
+    FRAME_STEP -- samples num between successive frames (800)
 
-    num_of_frames = (LEN - FRAME_SIZE) / FRAME_STEP = 105
+    num_of_frames = (LEN - FRAME_SIZE) / FRAME_STEP = 218
 
     len MFCC feature vector for each frame: 20
     len FBANK feature vector for each frame: 128
 
     So extract_features returns np.array with dtype=float and shape=(105, 148)
     """
-    def __init__(self, frame_sec=0.5, frame_step=1600):
+    def __init__(self, frame_sec=0.1, frame_step=800):
         self.frame_sec = frame_sec
-        self.frame_step = 1600
+        self.frame_step = frame_step
 
     def extract_features(self, wav_path):
         rate, audio = wav.read(wav_path)

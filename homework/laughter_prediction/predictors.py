@@ -85,4 +85,4 @@ class RnnPredictor(Predictor):
         return proba[:, :, 1] >= self.threshold
 
     def predict_proba(self, X):
-        return self.model.predict(X)
+        return self.model.predict(X)[0]

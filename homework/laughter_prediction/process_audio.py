@@ -9,9 +9,9 @@ from predictors import RnnPredictor
 
 def predicted_to_intervals(pred_classes):
     RATE = 16000
-    FRAME_SEC = 0.5
+    FRAME_SEC = 0.1
     FRAME_SIZE = int(RATE * FRAME_SEC)
-    FRAME_STEP = int(FRAME_SIZE / 5)
+    FRAME_STEP = int(FRAME_SIZE / 2)
 
     intervals = []
     start = -1
@@ -39,8 +39,9 @@ def main():
     features = extr.extract_features(args.wav_path)
 
     model = RnnPredictor()
-    pred_classes = model.predict(features[np.newaxis, :, :])[0]
-    intervals = predicted_to_intervals(pred_classes)
+    mfcc_len = 20
+    pred_classes = model.predict([features[np.newaxis,:,:mfcc_len], features[np.newaxis,:,mfcc_len:]])
+    intervals = predicted_to_intervals(pred_classes[0])
 
     print("Target intervals")
     print(intervals)

@@ -53,7 +53,7 @@ class SSPNetDataSampler:
             laught_by_sample[start:end+1] = 1
 
         FRAME_SIZE = int(frame_sec * self.sample_rate)
-        FRAME_STEP = int(FRAME_SIZE / 5)
+        FRAME_STEP = int(FRAME_SIZE / 2)
 
         is_laughter = np.array([
             laught_by_sample[i : i + FRAME_SIZE].sum() > FRAME_SIZE / 2
