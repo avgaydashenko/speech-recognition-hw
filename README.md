@@ -12,6 +12,7 @@ Refs:
 * ctc: https://github.com/SeanNaren/warp-ctc/tree/pytorch_bindings/pytorch_binding
 
 Running:
+
 `docker run -d -it -v `pwd`:/workspace/speech --name ctc-hw continuumio/miniconda3:latest`
 
 `docker exec -it ctc-hw bash`
